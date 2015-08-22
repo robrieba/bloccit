@@ -1,19 +1,19 @@
 module RandomData
   def random_paragraph
-    sentances = []
+    sentences = []
     rand(4..6).times do
-      sentances << random_sentance
+      sentences << random_sentence
     end
-    sentances.join(" ")
+    sentences.join(" ")
   end
 
-  def random_sentance
+  def random_sentence
     strings = []
     rand(3..8).times do
       strings << random_word
     end
-    sentance = strings.join(" ")
-    sentance.capitalize << "."
+    sentence = strings.join(" ")
+    sentence.capitalize << "."
   end
 
   def random_word
