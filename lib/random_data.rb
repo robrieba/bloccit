@@ -22,4 +22,22 @@ module RandomData
     letters[0, rand(3..8)].join
   end
 
+  def random_title
+    title = []
+    lower_case_words = [ "a",    "an",   "the", "yet",  "so",
+                         "from", "and",  "but", "or",   "up",
+                         "for",  "nor",  "on",  "at",   "to",
+                         "by",   "off",  "on",  "onto", "of",
+                         "as" ]
+
+    rand(4..9).times do
+      title << random_word.capitalize
+      if (rand(2) == 0)
+        title << lower_case_words[rand(lower_case_words.length-1)]
+      end
+    end
+    title.last.capitalize!
+    title.join(" ")
+  end
+
 end
