@@ -9,7 +9,7 @@ include RandomData
 
 50.times do
   Post.create(
-    title: RandomData.random_sentance,
+    title: RandomData.random_sentence,
     body: RandomData.random_paragraph
   )
 end
