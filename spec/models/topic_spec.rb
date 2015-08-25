@@ -5,6 +5,8 @@ RSpec.describe Topic, type: :model do
   let(:topic) { Topic.create!(name: RandomData.random_title, description: RandomData.random_paragraph) }
 
   it { should have_many(:posts) }
+  it { should have_many(:sponsored_posts) }
+
 
   context "attributes" do
     it "should respond to name" do
