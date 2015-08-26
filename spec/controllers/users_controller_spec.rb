@@ -22,6 +22,13 @@ RSpec.describe UsersController, type: :controller do
      end
    end
 
+   describe "POST confirm" do
+     it "returns http success" do
+       post :create, user: new_user_attributes
+       expect(response).to have_http_status(:redirect)
+     end
+   end
+
   describe "POST create" do
     it "returns http success" do
       post :create, user: new_user_attributes
