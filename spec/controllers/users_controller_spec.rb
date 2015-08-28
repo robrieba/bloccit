@@ -10,7 +10,7 @@ RSpec.describe UsersController, type: :controller do
     }
   end
 
-  describe "GET new"
+  describe "GET new" do
      it "returns http success" do
        get :new
        expect(response).to have_http_status(:success)
@@ -58,7 +58,5 @@ RSpec.describe UsersController, type: :controller do
       post :create, user: new_user_attributes
       expect(session[:user_id]).to eq assigns(:user).id
     end
-
   end
-
 end
