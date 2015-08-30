@@ -41,7 +41,7 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
 
-    if current_user && (current_user != @post.user) && current_user.moderator?
+    if current_user.moderator? && @post.user != current_user
       redirect_user(@post)
     else
       if @post.destroy

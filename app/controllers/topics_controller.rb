@@ -1,6 +1,6 @@
 class TopicsController < ApplicationController
   before_action :require_sign_in, except: [:index, :show]
-  before_action :authorize_user, except: [:index, :show, :edit]
+  before_action :authorize_user, except: [:index, :show]
 
   def index
    @topics = Topic.all
@@ -29,11 +29,7 @@ class TopicsController < ApplicationController
   end
 
   def edit
-    if !current_user.moderator? && !current_user.admin?
-      redirect_user
-    else
-      @topic = Topic.find(params[:id])
-    end
+    @topic = Topic.find(params[:id])
   end
 
   def update
@@ -76,7 +72,9 @@ private
   end
 
   def authorize_user
-    unless current_user.admin?
+    if  !current_user.moderator? && !current_user.admin?
+      redirect_user
+    elsif current_user.moderator? && controller.action_name != 'edit'
       redirect_user
     end
   end
