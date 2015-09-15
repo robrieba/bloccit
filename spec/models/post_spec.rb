@@ -16,12 +16,15 @@ RSpec.describe Post, type: :model do
   it { should have_many(:labels).through(:labelings) }
   it { should have_many(:comments) }
   it { should have_many(:votes) }
+  it { should have_many(:favorites) }
 
   it { should validate_presence_of(:title) }
-  it { should validate_presence_of(:body) }
-  it { should validate_presence_of(:topic) }
   it { should validate_length_of(:title).is_at_least(5) }
+
+  it { should validate_presence_of(:body) }
   it { should validate_length_of(:body).is_at_least(20) }
+
+  it { should validate_presence_of(:topic) }
 
   context "attributes" do
     it "should respond to title" do
@@ -74,7 +77,7 @@ RSpec.describe Post, type: :model do
         post.votes.create!(value: -1)
         expect(post.rank).to eq (old_rank - 1)
       end
-    end    
+    end
 
   end
 end
