@@ -3,11 +3,10 @@ include RandomData
 include SessionsHelper
 
  RSpec.describe VotesController, type: :controller do
-   let(:my_user) { User.create!(name: "Bloccit User", email: "user@bloccit.com", password: "helloworld") }
-   let(:other_user) { User.create!(name: RandomData.random_name, email: RandomData.random_email, password: "helloworld", role: :member) }
-   let (:my_topic) { Topic.create!(name:  RandomData.random_sentence, description: RandomData.random_paragraph) }
-   let(:my_post) { my_topic.posts.create!(title: RandomData.random_sentence, body: RandomData.random_paragraph, user: my_user) }
-   let(:my_vote) { Vote.create!(value: 1) }
+   let(:my_topic) { create(:topic) }
+   let(:my_user) { create(:user) }
+   let(:other_user) { create(:user) }
+   let(:my_post) { create(:post, topic: my_topic, user: my_user) }
 
    context "guest" do
      describe "POST up_vote" do
@@ -94,7 +93,7 @@ include SessionsHelper
             post :down_vote, post_id: my_post.id
             expect(response).to redirect_to(my_topic)
           end
-        end       
+        end
      end
    end
  end
