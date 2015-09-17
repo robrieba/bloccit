@@ -104,7 +104,9 @@ RSpec.describe CommentsController, type: :controller do
 
        it "redirects to the post show view" do
          delete :destroy, format: :js, post_id: my_post.id, id: my_comment.id
-         expect(response).to have_http_status(:success)       end
+         expect(response).to have_http_status(:success)
+       end
      end
-   end
+  end
+
 end
