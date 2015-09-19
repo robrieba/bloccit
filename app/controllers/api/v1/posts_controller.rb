@@ -34,6 +34,11 @@ class Api::V1::PostsController < Api::V1::BaseController
     end
   end
 
+  def show
+    post = Post.find(params[:id])
+    render json: post.to_json(include: [:comments, :votes, :favorites]), status: 200
+  end
+
   private
 
   def post_params

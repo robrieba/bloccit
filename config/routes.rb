@@ -26,7 +26,7 @@ Rails.application.routes.draw do
       resources :topics, except: [:edit, :new] do
         post '/create_post' => 'posts#create', as: :create_post
       end
-      resources :posts, only: [:update, :destroy]
+      resources :posts, only: [:update, :destroy, :show]
     end
   end
 
