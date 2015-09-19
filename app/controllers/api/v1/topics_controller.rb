@@ -42,7 +42,7 @@ class Api::V1::TopicsController < Api::V1::BaseController
       render json: {error: "Topic destroy failed", status: 400}, status: 400
     end
   end
-  
+
   private
 
   def topic_params
